@@ -18,9 +18,9 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v3.5.3
       - name: Installing dependendcy
-        run: pnpm i
+        run: npm i
       - name: Build artifact
-        run: pnpm build
+        run: npm build
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:

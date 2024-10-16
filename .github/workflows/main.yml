@@ -47,5 +47,5 @@ jobs:
         with:
           deploy_key: ${{ secrets.PRIVATE_KEY }}
           personal_token: ${{ secrets.GH_ACTION_TOKEN }}
-          publish_branch: gh-pages
+          publish_branch: release
           publish_dir: ./public/dndkit

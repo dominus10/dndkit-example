@@ -48,5 +48,4 @@ jobs:
           deploy_key: ${{ secrets.PRIVATE_KEY }}
           personal_token: ${{ secrets.GH_ACTION_TOKEN }}
           publish_branch: gh-pages
-          external_repository: dominus10.github.io
           publish_dir: ./public/dndkit

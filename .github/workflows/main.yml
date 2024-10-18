@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4.2.1
-      - name: Installing dependendcy
+      - name: Installing dependency
         run: npm i
       - name: Build artifact
         run: npm run build
@@ -30,6 +30,9 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -43,9 +46,8 @@ jobs:
           name: production-files
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.PRIVATE_KEY }}
-          personal_token: ${{ secrets.GH_ACTION_TOKEN }}
-          publish_branch: release
-          publish_dir: ./public/dndkit
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          destination_dir: dndkit

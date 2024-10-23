@@ -30,7 +30,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: test
-          files: production-files.zip # Specify the single file to release
+          files: ./dist/production-files.zip # Specify the single file to release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

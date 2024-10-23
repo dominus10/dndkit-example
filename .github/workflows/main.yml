@@ -25,14 +25,6 @@ jobs:
         with:
           name: production-files
           path: ./dist
-      - name: Remove existing release (if any)
-        run: |
-          RELEASE_ID=$(gh release list --limit 1 --json id --jq '.[0].id')
-          if [ ! -z "$RELEASE_ID" ]; then
-            gh release delete "$RELEASE_ID" --yes
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload single file as release
         uses: softprops/action-gh-release@v2

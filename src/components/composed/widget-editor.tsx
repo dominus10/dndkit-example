@@ -140,7 +140,7 @@ const DroppableArea = ({ children }: { children: ReactNode }) => {
     <>
       <div className="w-1/2 flex flex-col ml-1 gap-y-0 relative">
         <p className="text-sm">Preview</p>
-        <div className="absolute -top-1 w-full h-[calc(100%-48px)]">
+        <div className="absolute -top-1 w-full aspect-[16/9]">
           <Appbar
             disabled={true}
             className="scale-50 -translate-x-[25%] w-[200%] translate-y-[25%]"

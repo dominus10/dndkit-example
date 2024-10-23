@@ -2,14 +2,13 @@ name: Dndkit Deploy on main push
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches: [main]
 
 permissions:
   contents: write
   pages: write
   id-token: write
-  
+
 jobs:
   build:
     name: Build
@@ -26,29 +25,13 @@ jobs:
         with:
           name: production-files
           path: ./dist
-  deploy:
-    name: Deploy
+  dispatch:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4.2.1
-
-      - name: Download production-ready build files
-        uses: actions/download-artifact@v4.1.8
+      - name: Trigger to gh-pages
+        uses: peter-evans/repository-dispatch@v3
         with:
-          name: production-files
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main-dndkit
-          destination_dir: dndkit
+          repository: dominus10/dominus10.github.io
+          event-type: trigger-download
+          client-payload: '{"repository": "dndkit-example"}'

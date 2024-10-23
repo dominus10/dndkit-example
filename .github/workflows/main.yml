@@ -32,7 +32,6 @@ jobs:
       - name: Trigger to gh-pages
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.PAT }}
           repository: dominus10/dominus10.github.io
           event-type: trigger-download
           client-payload: '{"repository": "dndkit-example"}'

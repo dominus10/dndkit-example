@@ -29,12 +29,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     env:
-      TOKEN: ${{ secrets.deploy }}
+      TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Trigger to gh-pages
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: TOKEN
+          token: $TOKEN
           repository: dominus10/dominus10.github.io
           event-type: trigger-download
           client-payload: '{"repository": "dndkit-example"}'
